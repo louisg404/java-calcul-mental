@@ -31,7 +31,7 @@
         </tbody>
     </table>
 
-    <a href="<c:url value="/scores?action=jeu" />" class="button">Nouvelle partie</a>
+    <a href="<c:url value="/questions" />" class="button">Nouvelle partie</a>
 </div>
 
 <script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/jquery.js"></script>

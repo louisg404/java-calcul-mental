@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class HomeController extends HttpServlet {
 
     private static final String PAGE_LIST_JSP = "/WEB-INF/jsp/home.jsp";
-    private static final String PAGE_EDIT_JSP = "/WEB-INF/jsp/jeu.jsp";
+    private static final String PAGE_EDIT_JSP = "/questions";
     private static final Logger LOGGER = Logger.getLogger( HomeController.class.getName() );
     private int counter;
 
@@ -44,7 +44,7 @@ public class HomeController extends HttpServlet {
 
         LOGGER.log( Level.INFO, "Je suis dans le GET !" );
 
-        HttpSession session = request.getSession( true );
+        HttpSession session = request.getSession( );
 
 
         List<Score> dataSession = ( List<Score> ) session.getAttribute( "scores" );

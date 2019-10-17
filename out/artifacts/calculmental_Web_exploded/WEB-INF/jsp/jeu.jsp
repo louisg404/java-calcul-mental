@@ -13,14 +13,18 @@
 </head>
 <body>
 <div class="row small-5 small-centered">
-    <h5>Jeu</h5>
+    <div class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="10">
+        <div class="progress-meter" style="width: 50%"></div>
+    </div>
+
+    <h4>${ sessionScope.questions.size() } questions disponibles</h4>
 
     <c:forEach var="question" items="${ sessionScope.questions }" varStatus="status">
-        ${question.nombre1}
-        ${question.nombre2}
+        <p>${question.nombre1} * ${question.nombre2}</p>
+        <input type="number" placeholder="Entrez votre reponse">
     </c:forEach>
 
-    <button class="button">Suivant</button>
+    <a class="button" href="#">Suivant</a>
 
 </div>
 <script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/jquery.js"></script>

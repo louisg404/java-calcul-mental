@@ -11,41 +11,39 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@WebServlet( name = "questionController", urlPatterns = {"/questions"} )
+@WebServlet( name = "questionController", urlPatterns = {"/questions"}, loadOnStartup = 1 )
 public class QuestionController extends HttpServlet {
 
     private static final String PAGE_JEU_JSP = "/WEB-INF/jsp/jeu.jsp";
 
     @Override
+    public void init() throws ServletException {
+        super.init();
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 
-        HttpSession session = request.getSession( true );
-
-
+        HttpSession session = request.getSession( );
         List<Question> dataSession = ( List<Question> ) session.getAttribute( "questions" );
 
         if ( null == dataSession ) {
             dataSession = new ArrayList<>();
-            //10 questions
-            dataSession.add(new Question(15, 12));
-            dataSession.add(new Question(15, 12));
-            dataSession.add(new Question(15, 12));
-            dataSession.add(new Question(15, 12));
-            dataSession.add(new Question(15, 12));
+
+            for (int i = 0; i<10; i++) {
+                dataSession.add(new Question((int) (Math.random() * (50)), (int) (Math.random() * (50))));
+            }
+
             session.setAttribute( "questions", dataSession );
         }
-
-        String action = request.getParameter( "action" );
-        if ( null == action ) {
-            request.getRequestDispatcher( PAGE_JEU_JSP ).forward( request, response );
-        } else {
-            int id;
-            try {
-                id = Integer.parseInt( request.getParameter( "id" ) );
-            } catch ( Exception e ) {
-                id = -1;
-            }
-        }
+        request.getRequestDispatcher( PAGE_JEU_JSP ).forward( request, response );
     }
 }

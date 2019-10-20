@@ -12,26 +12,65 @@
     <link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css"/>
 </head>
 <body>
-<div class="row small-5 small-centered">
-    <h5>TOP 10</h5>
-    <table>
-        <thead>
-        <tr>
-            <th>Resultat</th>
-            <th>ID Joueur</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="score" items="${ sessionScope.scores }" varStatus="status">
-            <tr>
-                <td>${score.resultat} / 10</td>
-                <td>${score.userId}</td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
 
-    <a href="<c:url value="/questions" />" class="button">Nouvelle partie</a>
+<div style="margin-top: 5%;" class="row">
+    <div class="small-3 columns">
+        <h1 style="font-weight: bold;">Accueil</h1>
+        <a class="hollow success button" href="questions">Commencer la partie</a>
+    </div>
+    <div class="small-9 columns">
+        <span class="label warning">Fonctionnalite 'meilleurs resultats' non-developpee.</span><br><br>
+        <table>
+            <thead>
+            <tr>
+                <th>Joueur</th>
+                <th>Best</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Louis</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Antoine</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Louis</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Antoine</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Louis</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Antoine</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Louis</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Antoine</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Louis</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Antoine</td>
+                <td>4</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/jquery.js"></script>

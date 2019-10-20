@@ -26,15 +26,9 @@ public class DAOFactory {
     }
 
     public static IDAO<User> getUserDAO() {
+
         IDAO<User> dao;
-        switch ( mode ) {
-            case "JDBC" :
-                dao = new UserDAOJDBC(dbUrl, dbLogin, dbPwd);
-                break;
-            case "JPA" :
-            default:
-                dao = null;
-        }
+        dao = new UserDAOJDBC(dbUrl, dbLogin, dbPwd);
         return dao;
     }
 

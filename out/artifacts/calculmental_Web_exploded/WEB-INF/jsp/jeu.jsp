@@ -13,19 +13,21 @@
 </head>
 <body>
 <div class="row small-5 small-centered">
-    <div class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="10">
-        <div class="progress-meter" style="width: 50%"></div>
+    <div class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="1" aria-valuetext="50 percent" aria-valuemax="10">
+        <div class="progress-meter" style="width: ${quest}0%">
+            <p class="progress-meter-text">${quest}0%</p>
+        </div>
     </div>
 
-    <h4>${ sessionScope.questions.size() } questions disponibles</h4>
+    <h1 style="font-weight: bold;">${expression.expression}</h1>
+    <form method="POST" action="questions">
+        <%-- L'attribut step=any nous permet d'accepter les entrées double, int... --%>
+        <div class="small-4 columns">
+            <input step="any" name="reponse" type="number" required>
+        </div>
 
-    <c:forEach var="question" items="${ sessionScope.questions }" varStatus="status">
-        <p>${question.nombre1} * ${question.nombre2}</p>
-        <input type="number" placeholder="Entrez votre reponse">
-    </c:forEach>
-
-    <a class="button" href="#">Suivant</a>
-
+        <button class="hollow success button" href="questions" type="submit" name="action">Valider</button>
+    </form>
 </div>
 <script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/jquery.js"></script>
 <script src="<%= request.getContextPath()%>/vendor/foundation-6.5.1/js/vendor/foundation.min.js"></script>
